@@ -5,3 +5,5 @@
 - [Лабораторная работа № 3 — настройка VXLAN на двух маршрутизаторах SONiC](lab3.md)
 
 - [Лабораторная работа № 4 - OpenFlow и OpenDaylight](lab4.md)
+
+- [ЛР5. MikroTik CHR как vCPE](lab5/README.md)

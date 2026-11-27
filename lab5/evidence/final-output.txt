@@ -1,0 +1,61 @@
+========================================
+ЛР5 завершена: 27.11.2026 17:44:19 MSK
+Студент: panindv@LAPTOP-MQH9B199, STUDENT=panin, N=2
+========================================
+--- HQ identity, eBGP, WireGuard ---
+  name: hq-panin
+
+Flags: E - ESTABLISHED
+ 0 E name="to-dc-1" instance=hq
+     remote.address=10.2.1.1 .as=65002 .id=10.2.1.1
+     .capabilities=mp,rr,em,gr,as4,ap,err,llgr,fqdn .afi=ip .messages=9
+     .bytes=274 .gr-restart=yes .gr-time=120 .eor=ip
+     local.address=10.2.1.2 .as=65102 .id=172.31.255.30
+     .cluster-id=172.31.255.30 .capabilities=mp,rr,enhe,gr,as4 .afi=ip
+     .messages=8 .bytes=207 .eor=""
+     output.procid=20 .network=to-dc .default-originate=if-installed
+     input.procid=20 ebgp
+     hold-time=3m keepalive-time=1m uptime=5m39s360ms
+     last-started=2026-11-27 14:38:40 prefix-count=1
+
+Flags: X - DISABLED; D - DYNAMIC
+ 0    interface=wg-br name="peer1"
+      public-key="yMoGrRxtGiTUIQZSDArZlL4ojm0BDv4SC/YykmXRDgI="
+      endpoint-address=100.64.2.2 endpoint-port=13002
+      current-endpoint-address=100.64.2.2 current-endpoint-port=13002
+      allowed-address=10.2.254.2/32,10.2.200.0/24 persistent-keepalive=25s
+      client-endpoint="" client-allowed-address="" rx=2492 tx=1992
+      last-handshake=1m38s
+
+--- dc1 BGP summary and routes ---
+
+IPv4 Unicast Summary:
+BGP router identifier 10.2.1.1, local AS number 65002 VRF default vrf-id 0
+BGP table version 3
+RIB entries 4, using 512 bytes of memory
+Peers 1, using 24 KiB of memory
+
+Neighbor        V         AS   MsgRcvd   MsgSent   TblVer  InQ OutQ  Up/Down State/PfxRcd   PfxSnt Desc
+10.2.1.2        4      65102        10        11        3    0    0 00:05:26            2        3 N/A
+
+Total number of neighbors 1
+Codes: K - kernel route, C - connected, L - local, S - static,
+       R - RIP, O - OSPF, I - IS-IS, B - BGP, E - EIGRP, N - NHRP,
+       T - Table, v - VNC, V - VNC-Direct, A - Babel, F - PBR,
+       f - OpenFabric, t - Table-Direct,
+       > - selected route, * - FIB route, q - queued, r - rejected, b - backup
+       t - trapped, o - offload failure
+
+IPv4 unicast VRF default:
+B>* 0.0.0.0/0 [20/0] via 10.2.1.2, Ethernet4, weight 1, 00:05:27
+B>* 10.2.200.0/24 [20/0] via 10.2.1.2, Ethernet4, weight 1, 00:05:27
+--- Branch to DC ping ---
+PING 10.2.100.10 (10.2.100.10) 56(84) bytes of data.
+64 bytes from 10.2.100.10: icmp_seq=1 ttl=61 time=3.37 ms
+64 bytes from 10.2.100.10: icmp_seq=2 ttl=61 time=2.50 ms
+
+--- 10.2.100.10 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1072ms
+rtt min/avg/max/mdev = 2.497/2.932/3.367/0.435 ms
+--- DC to Internet HTTP ---
+Internet HTTP: 200
