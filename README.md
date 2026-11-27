@@ -7,3 +7,5 @@
 - [Лабораторная работа № 4 - OpenFlow и OpenDaylight](lab4.md)
 
 - [ЛР5. MikroTik CHR как vCPE](lab5/README.md)
+
+- [ЛР6. Цепочка сервисных функций](lab6/README.md)

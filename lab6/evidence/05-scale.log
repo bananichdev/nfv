@@ -1,0 +1,12 @@
+FW instances and OVS ports after instantiate:
+NAMES                   STATUS              vnf type
+clab-panin-l6-fw2       Up About a minute   fw
+clab-panin-l6-fw1       Up 3 minutes        fw
+clab-panin-l6-shaper1   Up 3 minutes        shaper
+ 5(eth5): addr:aa:c1:ab:85:92:33
+ 6(eth6): addr:aa:c1:ab:d8:fc:58
+  - {name: "${STUDENT}-c1", from: client1, to: server, path: [fw1, shaper1]}
+  - {name: "${STUDENT}-c2", from: client2, to: server, path: [fw2, shaper1]}
+applied: 24 flows, removed stale: 0
+client2 HTTP: 200
+HTTP counters: fw1 6 -> 6, fw2 0 -> 6

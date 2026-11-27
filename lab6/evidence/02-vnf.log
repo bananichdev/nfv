@@ -1,0 +1,22 @@
+table netdev vnf_fw {
+	chain filter {
+		ip protocol tcp tcp dport 8002 counter packets 0 bytes 0 drop comment "block tcp/8002"
+		ip protocol tcp tcp dport 80 counter packets 0 bytes 0 accept comment "allow http"
+		ip protocol icmp counter packets 0 bytes 0 accept comment "allow icmp"
+		counter packets 11 bytes 766 comment "other"
+	}
+
+	chain from_client {
+		type filter hook ingress device "eth1" priority filter; policy accept;
+		jump filter
+	}
+
+	chain from_server {
+		type filter hook ingress device "eth2" priority filter; policy accept;
+		jump filter
+	}
+}
+qdisc tbf 8001: root refcnt 13 rate 12Mbit burst 4Kb lat 400ms
+  provider: "panin"
+    rate_mbit: 12
+  scaling: {min_instances: 1, max_instances: 1}

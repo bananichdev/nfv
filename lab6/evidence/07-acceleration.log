@@ -1,0 +1,6 @@
+iperf3 -R -P 4 -t 10 (sample OVS CPU under load):
+top - 14:54:56 up 58 min,  0 user,  load average: 0.79, 0.73, 0.44
+%Cpu(s):  4.2 us,  6.9 sy,  0.0 ni, 83.1 id,  0.0 wa,  0.0 hi,  5.8 si,  0.0 st
+    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
+[SUM]   0.00-10.00  sec  1017 MBytes   853 Mbits/sec  2592             sender
+[SUM]   0.00-10.00  sec  1013 MBytes   850 Mbits/sec                  receiver

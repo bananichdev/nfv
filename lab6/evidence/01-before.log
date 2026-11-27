@@ -1,0 +1,17 @@
+panindv
+NAMES                   STATUS
+clab-panin-l6-fw1       Up About a minute
+clab-panin-l6-client2   Up About a minute
+clab-panin-l6-odl       Up About a minute
+clab-panin-l6-sw        Up About a minute
+clab-panin-l6-shaper1   Up About a minute
+clab-panin-l6-server    Up About a minute
+clab-panin-l6-client1   Up About a minute
+        Controller "tcp:10.106.2.100:6653"
+            is_connected: true
+        fail_mode: secure
+Before SFC: client1 -> server
+PING 10.2.6.100 (10.2.6.100) 56(84) bytes of data.
+
+--- 10.2.6.100 ping statistics ---
+2 packets transmitted, 0 received, 100% packet loss, time 1005ms

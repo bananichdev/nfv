@@ -1,0 +1,28 @@
+fw1 stop requested: 2026-11-27T17:54:45+03:00
+clab-panin-l6-fw1
+client1 during fw1 failure:
+PING 10.2.6.100 (10.2.6.100) 56(84) bytes of data.
+
+--- 10.2.6.100 ping statistics ---
+2 packets transmitted, 0 received, 100% packet loss, time 1110ms
+
+client2 during fw1 failure:
+PING 10.2.6.100 (10.2.6.100) 56(84) bytes of data.
+
+--- 10.2.6.100 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1002ms
+rtt min/avg/max/mdev = 2.591/2.875/3.159/0.284 ms
+  - {name: "${STUDENT}-c1", from: client1, to: server, path: [fw2, shaper1]}
+  - {name: "${STUDENT}-c2", from: client2, to: server, path: [fw2, shaper1]}
+applied: 24 flows, removed stale: 0
+PING 10.2.6.100 (10.2.6.100) 56(84) bytes of data.
+64 bytes from 10.2.6.100: icmp_seq=1 ttl=64 time=2.89 ms
+
+--- 10.2.6.100 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 2.887/2.887/2.887/0.000 ms
+Stop request -> recovered ping: 6.36 s
+VNF fw1 удалён
+NAMES                   STATUS         vnf type
+clab-panin-l6-fw2       Up 2 minutes   fw
+clab-panin-l6-shaper1   Up 4 minutes   shaper

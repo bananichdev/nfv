@@ -1,0 +1,27 @@
+applied: 24 flows, removed stale: 0
+PING 10.2.6.100 (10.2.6.100) 56(84) bytes of data.
+64 bytes from 10.2.6.100: icmp_seq=1 ttl=64 time=5.14 ms
+64 bytes from 10.2.6.100: icmp_seq=2 ttl=64 time=2.64 ms
+
+--- 10.2.6.100 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 999ms
+rtt min/avg/max/mdev = 2.641/3.891/5.141/1.250 ms
+HTTP 80: 200
+State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess
+LISTEN 0      5         10.2.6.100:8002      0.0.0.0:*
+HTTP 8002: 000
+		ip protocol tcp tcp dport 8002 counter packets 3 bytes 180 drop comment "block tcp/8002"
+		ip protocol tcp tcp dport 80 counter packets 6 bytes 393 accept comment "allow http"
+		ip protocol icmp counter packets 4 bytes 336 accept comment "allow icmp"
+		counter packets 22 bytes 2531 comment "other"
+OVS rules priority=300: 24
+ n_packets=11, n_bytes=895, priority=300,ip,in_port=1,nw_src=10.2.6.11 actions=output:3
+ n_packets=8, n_bytes=673, priority=300,ip,in_port=4,nw_src=10.2.6.11 actions=output:7
+ n_packets=1, n_bytes=42, priority=300,arp,in_port=1,arp_spa=10.2.6.11 actions=output:3
+ n_packets=1, n_bytes=42, priority=300,arp,in_port=4,arp_spa=10.2.6.11 actions=output:7
+ n_packets=8, n_bytes=673, priority=300,ip,in_port=8,nw_src=10.2.6.11 actions=output:9
+ n_packets=1, n_bytes=42, priority=300,arp,in_port=8,arp_spa=10.2.6.11 actions=output:9
+ n_packets=0, n_bytes=0, priority=300,ip,in_port=4,nw_src=10.2.6.12 actions=output:7
+ n_packets=0, n_bytes=0, priority=300,arp,in_port=4,arp_spa=10.2.6.12 actions=output:7
+ n_packets=0, n_bytes=0, priority=300,ip,in_port=8,nw_src=10.2.6.12 actions=output:9
+ n_packets=0, n_bytes=0, priority=300,arp,in_port=8,arp_spa=10.2.6.12 actions=output:9

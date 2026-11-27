@@ -1,0 +1,22 @@
+qdisc tbf 8001: root refcnt 13 rate 12Mbit burst 64Kb lat 400ms
+ Sent 9972828 bytes 19073 pkt (dropped 32, overlimits 2772 requeues 0)
+ backlog 0b 0p requeues 0
+Client1 -> server (5 s):
+[  5]   0.00-5.00   sec  8.38 MBytes  14.0 Mbits/sec    2             sender
+[  5]   0.00-5.37   sec  7.12 MBytes  11.1 Mbits/sec                  receiver
+Server -> client1 (5 s):
+[  5]   0.00-5.00   sec   282 MBytes   473 Mbits/sec  523             sender
+[  5]   0.00-5.00   sec   281 MBytes   471 Mbits/sec                  receiver
+ODL flow statistics:
+sfc-panin-c1-fwd0-arp        prio=300 in=1              pkts=1
+sfc-panin-c1-fwd0-ip         prio=300 in=1              pkts=26069
+sfc-panin-c1-fwd1-arp        prio=300 in=4              pkts=1
+sfc-panin-c1-fwd1-ip         prio=300 in=4              pkts=26065
+sfc-panin-c1-fwd2-arp        prio=300 in=8              pkts=1
+sfc-panin-c1-fwd2-ip         prio=300 in=8              pkts=26029
+sfc-panin-c1-rev0-arp        prio=300 in=9              pkts=1
+sfc-panin-c1-rev0-ip         prio=300 in=9              pkts=100017
+sfc-panin-c1-rev1-arp        prio=300 in=7              pkts=1
+sfc-panin-c1-rev1-ip         prio=300 in=7              pkts=98659
+sfc-panin-c1-rev2-arp        prio=300 in=3              pkts=1
+sfc-panin-c1-rev2-ip         prio=300 in=3              pkts=98649

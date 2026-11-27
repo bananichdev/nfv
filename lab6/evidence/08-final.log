@@ -1,0 +1,20 @@
+ЛР6 | 2026-11-27T17:57:01+03:00 | panindv@LAPTOP-MQH9B199 | panin, N=2
+VNF after heal
+NAMES                   STATUS         vnf type
+clab-panin-l6-fw2       Up 4 minutes   fw
+clab-panin-l6-shaper1   Up 6 minutes   shaper
+RESTCONF per-chain counters
+sfc-panin-c1-fwd0-ip         prio=300 in=1              pkts=58003
+sfc-panin-c1-fwd1-ip         prio=300 in=6              pkts=30476
+sfc-panin-c1-fwd2-ip         prio=300 in=8              pkts=57959
+sfc-panin-c2-fwd0-ip         prio=300 in=2              pkts=8
+sfc-panin-c2-fwd1-ip         prio=300 in=6              pkts=8
+sfc-panin-c2-fwd2-ip         prio=300 in=8              pkts=8
+Firewall fw2 and shaper
+		ip protocol tcp tcp dport 8002 counter packets 3 bytes 180 drop comment "block tcp/8002"
+		ip protocol tcp tcp dport 80 counter packets 6 bytes 393 accept comment "allow http"
+qdisc tbf 8001: root refcnt 13 rate 12Mbit burst 64Kb lat 400ms
+client1 HTTP: 200
+client2 HTTP: 200
+[  5]   0.00-3.00   sec  5.50 MBytes  15.4 Mbits/sec    0             sender
+[  5]   0.00-3.36   sec  4.75 MBytes  11.8 Mbits/sec                  receiver
