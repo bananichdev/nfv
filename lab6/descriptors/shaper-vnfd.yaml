@@ -1,0 +1,17 @@
+# Упрощённый дескриптор VNF шейпера по мотивам ETSI NFV SOL001/TOSCA.
+vnfd:
+  id: vnf-shaper
+  provider: "panin"
+  version: "1.0"
+  description: "Прозрачный шейпер на tc TBF, вставляется в разрыв"
+  sw_image: lab6-tools:1.0          # образ (VDU)
+  vdu:
+    resources: {vcpu: 1, memory_mb: 64}
+  ext_cp:
+    - {id: cp-in, iface: eth1, role: "сторона клиентов"}
+    - {id: cp-out, iface: eth2, role: "сторона сервера"}
+  day1_config:
+    command: "tc qdisc replace dev eth2 root tbf rate 12mbit burst 64kb latency 400ms"
+    rate_mbit: 12
+  scaling: {min_instances: 1, max_instances: 1}
+  lcm_operations: [instantiate, configure, heal, terminate]

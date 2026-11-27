@@ -1,0 +1,11 @@
+# Стандартный вариант для ядра с CONFIG_NF_TABLES_BRIDGE.
+destroy table bridge vnf_fw
+table bridge vnf_fw {
+  chain forward {
+    type filter hook forward priority 0; policy accept;
+    ip protocol tcp tcp dport ${FW_PORT} counter drop comment "block tcp/${FW_PORT}"
+    ip protocol tcp tcp dport 80 counter accept comment "allow http"
+    ip protocol icmp counter accept comment "allow icmp"
+    counter comment "other"
+  }
+}

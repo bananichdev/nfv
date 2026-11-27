@@ -1,0 +1,18 @@
+# WSL2: фильтрация IPv4 на входах прозрачной VNF до пересылки мостом.
+destroy table netdev vnf_fw
+table netdev vnf_fw {
+  chain filter {
+    ip protocol tcp tcp dport ${FW_PORT} counter drop comment "block tcp/${FW_PORT}"
+    ip protocol tcp tcp dport 80 counter accept comment "allow http"
+    ip protocol icmp counter accept comment "allow icmp"
+    counter comment "other"
+  }
+  chain from_client {
+    type filter hook ingress device "eth1" priority 0; policy accept;
+    jump filter
+  }
+  chain from_server {
+    type filter hook ingress device "eth2" priority 0; policy accept;
+    jump filter
+  }
+}
